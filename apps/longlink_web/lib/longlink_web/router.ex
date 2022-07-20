@@ -17,7 +17,9 @@ defmodule LonglinkWeb.Router do
   scope "/", LonglinkWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", PageController, only: [
+      :show
+    ]
   end
 
   # Other scopes may use custom stacks.

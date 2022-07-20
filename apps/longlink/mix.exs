@@ -31,7 +31,8 @@ defmodule Longlink.MixProject do
     [
       {:ecto_sql, "~> 3.8.3"},
       {:ecto_sqlite3, "~> 0.7.5"},
-      {:ecto_fields, "~>1.3.0"}
+      {:ecto_fields, "~>1.3.0"},
+      {:base62, "~> 1.2"}
     ]
   end
 end
