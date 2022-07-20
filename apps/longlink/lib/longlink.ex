@@ -20,6 +20,10 @@ defmodule Longlink do
     end
   end
 
+  def get_original_link(%{short: short} = attr) do
+    @repo.get_by(Link, attr)
+  end
+
   def list_links() do
     @repo.all(Link)
   end

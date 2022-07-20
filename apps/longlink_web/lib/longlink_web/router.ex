@@ -17,8 +17,10 @@ defmodule LonglinkWeb.Router do
   scope "/", LonglinkWeb do
     pipe_through :browser
 
-    get "/", PageController, only: [
-      :show
+    get "/", PageController, :index
+    resources "u", LonglinkController, only: [
+      :show,
+      :create
     ]
   end
 
