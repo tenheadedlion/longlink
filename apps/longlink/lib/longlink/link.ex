@@ -16,7 +16,7 @@ defmodule Longlink.Link do
 
   def validate_url(:original, url) do
     case EctoFields.URL.cast(url) do
-      :error -> [content: "invalid url, expect a valid fully qualified url"]
+      :error -> [original: "invalid url, expect a valid fully qualified url"]
       _ -> []
     end
   end

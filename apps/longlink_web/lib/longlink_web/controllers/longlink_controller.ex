@@ -14,7 +14,7 @@ defmodule LonglinkWeb.LonglinkController do
         redirect(conn, to: Routes.longlink_path(conn, :show, %{link | id: link.short}))
 
       {:error, link} ->
-        render(conn, "new.html", user: link)
+        render(conn, "new.html", link: link)
     end
   end
 
