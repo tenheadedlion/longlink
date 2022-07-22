@@ -11,9 +11,10 @@ defmodule LonglinkWeb.Application do
       # Start the Telemetry supervisor
       LonglinkWeb.Telemetry,
       # Start the Endpoint (http/https)
-      LonglinkWeb.Endpoint
+      LonglinkWeb.Endpoint,
       # Start a worker by calling: LonglinkWeb.Worker.start_link(arg)
       # {LonglinkWeb.Worker, arg}
+       {Phoenix.PubSub, name: LonglinkWeb.PubSub}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

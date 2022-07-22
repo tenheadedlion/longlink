@@ -1,0 +1,20 @@
+<%= form_for @link, @action, fn f -> %>
+  <%= if @link.action do %>
+    <div class="alert alert-danger">
+      Unfortunately, there are errors in your
+      submission. Please correct them below.
+    </div>
+  <% end %>
+
+
+  <div class="open-url">
+    <div class="input-url">
+        <%= label f, "Enter the original URL:" %>
+        <%= text_input f, :original %>
+        <%= error_tag f, :original %>
+    </div>
+    <div class="m-btn m-btn-block m-btn-orange">
+      <%= submit "Submit" %>
+    </div>
+  </div>
+<% end %>

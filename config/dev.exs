@@ -9,14 +9,18 @@ import Config
 config :longlink_web, LonglinkWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  http: [ip: {127, 0, 0, 1}, port: 4000],
+  http: [ip: {0, 0, 0, 0}, port: 4000],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
   secret_key_base: "c4i8ugRWfy6fWDacrzDLzdpVyPYQsE9B+lDpqnha4TneA0e39Kj1BX7JzjYrtZNf",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]},
+    sass:
+      {DartSass, :install_and_run,
+       [:default, ~w(--embed-source-map --source-map-urls=absolute --watch)]}
   ]
 
 # ## SSL Support

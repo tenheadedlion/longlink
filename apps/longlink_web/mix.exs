@@ -37,6 +37,7 @@ defmodule LonglinkWeb.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:longlink, in_umbrella: true},
       {:phoenix, "~> 1.6.8"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
@@ -49,7 +50,9 @@ defmodule LonglinkWeb.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:longlink, in_umbrella: true}
+      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
+      {:dart_sass, "~> 0.5", runtime: Mix.env() == :dev},
+      {:phoenix_ecto, "~> 4.0"}
     ]
   end
 
@@ -59,7 +62,9 @@ defmodule LonglinkWeb.MixProject do
   defp aliases do
     [
       setup: ["deps.get"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": ["tailwind default --minify", "esbuild default --minify",
+      "sass default --no-source-map --style=compressed",
+      "phx.digest"]
     ]
   end
 end

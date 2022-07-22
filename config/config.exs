@@ -50,3 +50,23 @@ import_config "#{config_env()}.exs"
 
 config :longlink, ecto_repos: [Longlink.Repo]
 config :longlink, Longlink.Repo, database: "db/longlink.db"
+
+config :tailwind,
+  version: "3.1.4",
+  default: [
+    args: ~w(
+    --config=tailwind.config.js
+    --input=../priv/static/assets/app.tailwind.css
+    --output=../priv/static/assets/app.css
+  ),
+    cd: Path.expand("../apps/longlink_web/assets", __DIR__)
+  ]
+
+config :dart_sass, version: "1.49.11"
+
+config :dart_sass,
+  version: "1.49.11",
+  default: [
+    args: ~w(css/app.scss ../priv/static/assets/app.tailwind.css),
+    cd: Path.expand("../apps/longlink_web/assets", __DIR__)
+  ]

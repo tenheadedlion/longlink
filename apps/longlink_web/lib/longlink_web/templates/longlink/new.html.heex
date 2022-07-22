@@ -1,0 +1,4 @@
+<div class="m-10">
+    <h1 class="text-4xl text-center">Create a short URL</h1>
+</div>
+<%= render("form.html", link: @link, action: Routes.longlink_path(@conn, :create)) %>

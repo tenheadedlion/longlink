@@ -1,1 +1,7 @@
-<%= @link.short %> => <%= @link.original %>
+<body>
+<div class="container text-3xl m-10">
+    <p class="text-2xl bg-slate-400 text-center"><%= @link.original %></p>
+    <p class="text-xl text-center">is now shortened to</p>
+    <p class="text-3xl bg-yellow-300 text-center"><a class="underline" href={@short_url}><%= @short_url %></a></p>
+</div>
+</body>

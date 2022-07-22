@@ -1,4 +1,4 @@
-# LonglinkUmbrella
+# A URL Shortener System
 
-**TODO: Add description**
+A project to mock the shortener(or protector) system of a funny social media platform.
 
