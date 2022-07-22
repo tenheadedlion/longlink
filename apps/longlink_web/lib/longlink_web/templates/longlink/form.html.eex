@@ -13,7 +13,7 @@
         <%= text_input f, :original %>
         <%= error_tag f, :original %>
     </div>
-    <div class="m-btn m-btn-block m-btn-orange">
+    <div class="submit">
       <%= submit "Submit" %>
     </div>
   </div>

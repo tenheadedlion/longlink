@@ -2661,6 +2661,14 @@ label {
   }
 }
 
+.submit {
+  button {
+    @apply m-btn m-btn-block m-btn-orange w-full;
+  }
+}
+
+
+
 //@import "phoenix";
 
 .alert {
