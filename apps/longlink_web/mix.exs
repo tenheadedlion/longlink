@@ -62,9 +62,12 @@ defmodule LonglinkWeb.MixProject do
   defp aliases do
     [
       setup: ["deps.get"],
-      "assets.deploy": ["tailwind default --minify", "esbuild default --minify",
-      "sass default --no-source-map --style=compressed",
-      "phx.digest"]
+      "assets.deploy": [
+        "esbuild default --minify",
+        "tailwind default --minify",
+        "sass default --no-source-map --style=compressed",
+        "phx.digest"
+      ]
     ]
   end
 end
