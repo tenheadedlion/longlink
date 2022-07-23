@@ -61,11 +61,16 @@ defmodule LonglinkWeb.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get"],
+      setup: ["deps.get", "ecto.setup", "assets.build"],
+      "assets.build": [
+        "esbuild default",
+        "sass default --no-source-map --style=compressed",
+        "tailwind default --minify"
+      ],
       "assets.deploy": [
         "esbuild default --minify",
-        "tailwind default --minify",
         "sass default --no-source-map --style=compressed",
+        "tailwind default --minify",
         "phx.digest"
       ]
     ]
