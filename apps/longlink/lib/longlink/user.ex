@@ -43,4 +43,6 @@ defmodule Longlink.User do
   end
 
   def hash_password(changeset), do: changeset
+
+ 
 end

@@ -1,5 +1,6 @@
 defmodule LonglinkWeb.LonglinkController do
   use LonglinkWeb, :controller
+  plug(:require_logged_in_user)
 
   def new(conn, _params) do
     link = Longlink.new_link()
@@ -29,4 +30,13 @@ defmodule LonglinkWeb.LonglinkController do
       })
     end
   end
+
+  defp require_logged_in_user(%{assigns: %{current_user: nil}} = conn, _opts) do
+    conn
+    |> put_flash(:error, "Please log in first")
+    |> redirect(to: Routes.session_path(conn, :new))
+    |> halt()
+  end
+
+  defp require_logged_in_user(conn, _opts), do: conn
 end
