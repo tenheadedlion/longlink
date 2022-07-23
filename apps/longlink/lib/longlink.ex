@@ -1,6 +1,6 @@
 defmodule Longlink do
   @repo Longlink.Repo
-  alias Longlink.Link
+  alias Longlink.{Link, User, Password}
 
   def new_link() do
     Longlink.Link.changeset(%Longlink.Link{}) |> IO.inspect()
@@ -18,30 +18,32 @@ defmodule Longlink do
     end
   end
 
-  # def create_redirection(%{"original" => original}) do
-  #  short = "unimplemented!"
-  #
-  #  %Link{}
-  #  |> Link.changeset(%{short: short, original: original})
-  #  |> @repo.insert()
-  # end
-  #
-  # def create(original) do
-  #  # insert first, to avoid data race
-  #  # in case many requests rush in simultaneously
-  #  with {:ok, link} <- create_redirection(%{"original" => original}) do
-  #    link
-  #    |> Ecto.Changeset.change(short: link.id |> Base62.encode())
-  #    |> @repo.update()
-  #  end
-  # end
-
-  def get_original_link(attr) do
+  def get_link(attr) do
     attr |> IO.inspect()
     @repo.get_by(Link, attr)
   end
 
-  def list_links() do
-    @repo.all(Link)
+  def get_user(id) do
+    @repo.get!(User, id)
+  end
+
+  def new_user() do
+    User.changeset_with_password_and_invite_code(%User{})
+  end
+
+  def insert_user(params) do
+    %User{}
+    |> User.changeset_with_password_and_invite_code(params)
+    |> @repo.insert()
+  end
+
+  def get_user_by_username_and_password(username, password) do
+    with user when not is_nil(user) <- @repo.get_by(User, %{username: username}),
+         true <-
+           Password.verify_with_hash(password, user.hashed_password) do
+      user
+    else
+      _ -> Password.dummy_verify()
+    end
   end
 end

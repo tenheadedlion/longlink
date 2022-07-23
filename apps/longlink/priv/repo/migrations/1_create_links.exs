@@ -1,4 +1,4 @@
-defmodule Longlink.Repo.Migrations.CreateItems do
+defmodule Longlink.Repo.Migrations.CreateLinks do
   use Ecto.Migration
 
   def change do

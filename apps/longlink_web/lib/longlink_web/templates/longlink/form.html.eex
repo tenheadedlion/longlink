@@ -8,7 +8,7 @@
 
 
   <div class="open-url">
-    <div class="input-url">
+    <div class="inputbox">
         <%= label f, "Enter the original URL:" %>
         <%= text_input f, :original %>
         <%= error_tag f, :original %>

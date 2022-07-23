@@ -21,7 +21,7 @@ defmodule LonglinkWeb.LonglinkController do
   def show(conn, %{"id" => short}) do
     short |> IO.inspect()
 
-    with link when not is_nil(link) <- Longlink.get_original_link(%{short: short}) do
+    with link when not is_nil(link) <- Longlink.get_link(%{short: short}) do
       render(conn, "show.html", %{
         link: link,
         short_url:

@@ -2654,10 +2654,13 @@ label {
   font-size: 0.75rem;
 }
 
-.input-url {
+.inputbox {
   @apply m-5;
   input{
-    @apply ml-3 w-72 p-2;
+    @apply ml-3 w-60 pl-0;
+  }
+  label {
+    @apply inline-block w-40;
   }
 }
 

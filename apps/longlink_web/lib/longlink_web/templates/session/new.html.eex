@@ -1,0 +1,18 @@
+<h1 class="text-center text-3xl m-5"> Login </h1>
+
+<%= form_for @conn, Routes.session_path(@conn, :create), [as: :user], fn f -> %>
+
+  <div class="open-url text-sm">
+    <div class="inputbox">
+        <%= label f, :username %>
+        <%= text_input f, :username %>
+    </div>
+    <div class="inputbox">
+        <%= label f, :password %>
+        <%= password_input f, :password %>
+    </div>
+    <div class="submit">
+      <%= submit "Submit" %>
+    </div>
+  </div>
+<% end %>

@@ -8,6 +8,7 @@ defmodule LonglinkWeb.Router do
     plug(:put_root_layout, {LonglinkWeb.LayoutView, :root})
     plug(:protect_from_forgery)
     plug(:put_secure_browser_headers)
+    plug LonglinkWeb.Authenticator
   end
 
   pipeline :api do
@@ -17,6 +18,10 @@ defmodule LonglinkWeb.Router do
   scope "/", LonglinkWeb do
     pipe_through(:browser)
 
+    get("/login", SessionController, :new)
+    post("/login", SessionController, :create)
+    delete("/logout", SessionController, :delete)
+
     resources("/", PageController, only: [:index, :show])
 
     resources("/urls", LonglinkController,
@@ -24,6 +29,14 @@ defmodule LonglinkWeb.Router do
         :show,
         :create,
         :new
+      ]
+    )
+
+    resources("/users", UserController,
+      only: [
+        :show,
+        :new,
+        :create
       ]
     )
   end

@@ -12,3 +12,5 @@ config :longlink, ecto_repos: [Longlink.Repo]
 config :longlink, Longlink.Repo,
   database: "test.db",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :pbkdf2_elixir, :rounds, 1
