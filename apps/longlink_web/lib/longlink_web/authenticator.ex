@@ -13,5 +13,6 @@ defmodule LonglinkWeb.Authenticator do
       end
 
     assign(conn, :current_user, user)
+    |> assign(:is_public, false)
   end
 end

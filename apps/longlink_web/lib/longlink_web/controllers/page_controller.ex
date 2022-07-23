@@ -1,12 +1,8 @@
 defmodule LonglinkWeb.PageController do
   use LonglinkWeb, :controller
 
-  def index(conn, _params) do
-    render(conn, "index.html")
-  end
-
   def show(conn, %{"id" => id}) do
-    id |> IO.inspect()
+    conn = assign(conn, :is_public, true)
 
     with link when not is_nil(link) <- Longlink.get_link(%{short: id}) do
       render(conn, "show.html", link: link)

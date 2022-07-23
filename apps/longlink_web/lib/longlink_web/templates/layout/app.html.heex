@@ -15,14 +15,21 @@
     <div class="m-container-max">
         <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
         <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-
-         <%= if @current_user do %>
-            Logged in as <%= link @current_user.username, to: Routes.user_path(@conn, :show, @current_user) %>
-        |
-        <%= link "Log out", to: Routes.session_path(@conn, :delete), method: :delete %>
-          <% else %>
-          <%= link "login", to: Routes.session_path(@conn, :new) %>
-        <% end %>
+        
+    <%= if not @is_public do %> 
+        <div class="m-5 underline">
+            <%= link "create short url", to: Routes.longlink_path(@conn, :new) %>
+        </div>
+        <div class="m-5">
+             <%= if @current_user do %>
+                Logged in as <%= link @current_user.username, to: Routes.user_path(@conn, :show, @current_user) %>
+            |
+            <%= link "Log out", to: Routes.session_path(@conn, :delete), method: :delete %>
+              <% else %>
+              <%= link "login", to: Routes.session_path(@conn, :new) %>
+            <% end %>
+        </div>
+    <% end %>
 
         <%= @inner_content %>
 
