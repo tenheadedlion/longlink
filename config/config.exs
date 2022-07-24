@@ -70,3 +70,13 @@ config :dart_sass,
     args: ~w(css/app.scss ../priv/static/assets/app.tailwind.css),
     cd: Path.expand("../apps/longlink_web/assets", __DIR__)
   ]
+
+# https://github.com/cogini/mix_systemd#configuration-options
+config :mix_systemd,
+  app_user: "longlink",
+  app_group: "longlink",
+  base_dir: "/opt",
+  deploy_dir: "/opt/longlink",
+  env_vars: [
+    "PORT=4000",
+  ]

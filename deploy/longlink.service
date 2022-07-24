@@ -1,0 +1,22 @@
+[Unit]
+Description= "Longlink"
+After=local-fs.target network.target
+
+[Service]
+Type=simple
+User=longlink
+Group=longlink
+WorkingDirectory=/opt/longlink/
+
+ExecStart=/opt/longlink/bin/longlink start
+ExecStop=/opt/longlink/bin/longlink stop
+Environment=MIX_ENV=prod
+
+Environment=PORT=4000
+
+LimitNOFILE=65535
+UMask=0027
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -9,7 +9,7 @@ defmodule LonglinkUmbrella.MixProject do
       deps: deps(),
       elixir: "~> 1.13.0",
       releases: [
-        longlink_beta: [
+        longlink: [
           applications: [
             longlink: :permanent,
             longlink_web: :permanent
@@ -25,6 +25,8 @@ defmodule LonglinkUmbrella.MixProject do
   #
   # Run "mix help deps" for examples and options.
   defp deps do
-    []
+    [
+      {:mix_systemd, "~> 0.7"}
+    ]
   end
 end
