@@ -6,7 +6,16 @@ defmodule LonglinkUmbrella.MixProject do
       apps_path: "apps",
       version: "0.1.0",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      elixir: "~> 1.13.0",
+      releases: [
+        longlink_beta: [
+          applications: [
+            longlink: :permanent,
+            longlink_web: :permanent
+          ]
+        ]
+      ]
     ]
   end
 
